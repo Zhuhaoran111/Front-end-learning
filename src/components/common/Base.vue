@@ -50,7 +50,7 @@
     position: relative;
     height: 100%;
     overflow: hidden;
-    background-color: #eee;
+    background-color: #ffffff;   //全局背景色
   }
   .sidebar, .main {
     position: absolute;

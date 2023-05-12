@@ -38,13 +38,17 @@
             icon: 'el-icon-setting'
           },
           {
-            title: 'eleemnt-ui组件封装',
+            title: 'element-ui组件封装',
             path: 'echarts',
             icon: 'el-icon-star-on',
             subItems: [
               {
-                title: 'table表格',
-                path: '/chart-simple'
+                title: 'table封装',
+                path: '/baseTable/index'     //这里的路径就是你所建的页面在page下面的路径
+              },
+              {
+                title: 'button封装',
+                path: '/baseButton/index'     //这里的路径就是你所建的页面在page下面的路径
               },
             ]
           },
@@ -53,21 +57,7 @@
             path: '/tab',
             icon: 'el-icon-message'
           },
-          {
-            title: '表格',
-            path: '/table',
-            icon: 'el-icon-tickets'
-          },
-          // {
-          //   title: '错误页面',
-          //   path: '/error',
-          //   icon: 'el-icon-warning'
-          // },
-          // {
-          //   title: '404页面',
-          //   path: '/404',
-          //   icon: 'el-icon-error'
-          // },
+
         ]
       }
     },

@@ -1809,9 +1809,9 @@
   .el-table--striped .el-table__body tr.el-table__row--striped.current-row td {
     background-color: #ecf5f1; }
   .el-table__body tr.hover-row > td, .el-table__body tr.hover-row.current-row > td, .el-table__body tr.hover-row.el-table__row--striped > td, .el-table__body tr.hover-row.el-table__row--striped.current-row > td {
-    background-color: #ecf5f1; }
+    background-color: #236849; }
   .el-table__body tr.current-row > td {
-    background-color: #ecf5f1; }
+    background-color: #136f46; }
   .el-table__column-resize-proxy {
     position: absolute;
     left: 200px;

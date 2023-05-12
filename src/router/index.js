@@ -32,11 +32,19 @@ export default new Router({
             title: 'tab选项卡'
           }
         },
+
         {
-          path: '/table',
-          component: () => import('../components/page/Table.vue'),
+          path: '/baseTable/index',   //这里的路径就是你所建的页面在page下面的路径
+          component: () => import('../components/page/baseTable/index.vue'),
           meta: {
-            title: '表格'
+            title: 'table表格封装'  //---这个就是上面的titile
+          }
+        },
+        {
+          path: '/baseButton/index',   //这里的路径就是你所建的页面在page下面的路径
+          component: () => import('../components/page/baseButton/index.vue'),
+          meta: {
+            title: 'button按钮封装'  //---这个就是上面的titile
           }
         }
       ]
