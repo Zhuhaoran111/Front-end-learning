@@ -1,10 +1,24 @@
 <template>
   <div>
-    <baseButon btnName="弹框1" type="primary" @btnClick="btnOneClick">
+    <baseButon btnName="基本form表单" type="primary" @btnClick="btnOneClick">
     </baseButon>
-    <baseForm :isShow="isShow" :formDataList="formDataList" :title="title" :formConfig="formConfig" :checkList="checkList"
-      @closeDialog="closeDialog">
-    </baseForm>
+
+ <!--由于每个弹窗的宽度不一样，就把弹窗提到父组件中 -->
+     <el-dialog
+      :visible="isShow"
+      title="新增"
+      width="40%"
+      @close="btnCancel">
+      <!-- 下面是表单的内容 -->
+      <baseForm  ref="refForm" :formDataList="formDataList" :title="title" :formConfig="formConfig" :checkList="checkList"
+        @closeDialog="closeDialog">
+      </baseForm>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="btnCancel">取 消</el-button>
+          <el-button type="primary" @click="confirm">保 存</el-button>
+        </span>
+      </el-dialog>
+
   </div>
 </template>
 
@@ -26,7 +40,7 @@ export default {
         userPhone: "",   //手机号码
         userEmali: "",   //用户邮政
         roleId: "",    //角色id
-        checkList: [],
+
       },
       checkList: [],  //checkList绑定
       //表单的数据
@@ -41,18 +55,10 @@ export default {
           ],
         },
         {
-          label: "登录账户",
-          prop: "userLoginName",
-          type: "input",
-          placeholder: '请输入登录账户',
-          rules: [
-            { required: true, message: "登录账户不能为空", trigger: "blur" },
-          ],
-        },
-        {
           label: "密码",
           prop: "userPassword",
           type: "input",
+          inputType:'password',
           placeholder: '请输入密码',
           rules: [{ required: true, message: "密码不能为空", trigger: "blur" }],
         },
@@ -68,27 +74,20 @@ export default {
             { required: true, message: "用户角色不能为空", trigger: "blur" },
           ],
         },
-
         {
           label: "日期",
           prop: "date",
           type: "date",  //类型是日期
           datetype: 'datetime',
           placeholder: '请选择日期',
-          rules: [{ required: true, message: "请选择日期", trigger: "blur" }],
-        },
-        {
-          label: "日期",
-          prop: "date",
-          type: "date",  //类型是日期
-          datetype: 'datetime',
-          placeholder: '请选择日期',
+          format:'yyyy-MM-dd HH:mm:ss',
           rules: [{ required: true, message: "请选择日期", trigger: "blur" }],
         },
         {
           label: "日期和时间范围",
           prop: "rangeDate",
           type: "date",  //类型是日期
+          format: 'yyyy-MM-dd HH:mm:ss',
           datetype: 'datetimerange',
           startDate: '开始日期',
           endDate: '结束日期'
@@ -117,19 +116,34 @@ export default {
         {
           label: "单选框",
           type: "radio",
+          prop:'radioValue',
           radioList: [
             {
+              id:1,
               label: '西游记'
             },
             {
+              id: 2,
               label: '三国演义'
             },
             {
+              id: 3,
               label: '水浒传'
             },
             {
+              id: 4,
               label: '红楼梦'
             }
+          ],
+        },
+
+         {
+          label: "描述",
+          prop: "description",
+          type: "textarea",
+          placeholder: '描述信息',
+          rules: [
+            { required: true, message: "描述信息不能为空", trigger: "blur" },
           ],
         },
 
@@ -148,11 +162,18 @@ export default {
     //打开弹窗的回调
     btnOneClick() {
       this.isShow = true
-      this.title = '新增'
     },
     //关闭弹窗的回调
     closeDialog() {
       this.isShow = false
+    },
+    //弹框取消的回调事件
+     btnCancel(e) {
+      this.isShow=false
+    },
+    //保存form表单
+    confirm() {
+        console.log(this.$refs.refForm.formData)
     }
   }
 }
