@@ -66,8 +66,8 @@
 <script>
 import baseButton from '../../../components/components-element-ui/base-button.vue'
 export default {
-  components:{baseButton},
-  name: '',
+  name: 'index',
+   components: { baseButton },
   data () {
     return {
       type:'',

@@ -8,7 +8,7 @@
 import baseTable from '../../../components/components-element-ui/base-table.vue'
 export default{
   components:{baseTable},
-  name: '',
+  name: 'index',
   data () {
     return {
       columns:[

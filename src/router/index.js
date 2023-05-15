@@ -24,7 +24,6 @@ export default new Router({
             title: '系统首页'
           }
         },
-
         {
           path: '/tab',
           component: () => import('../components/page/Tab.vue'),
@@ -32,7 +31,6 @@ export default new Router({
             title: 'tab选项卡'
           }
         },
-
         {
           path: '/baseTable/index',   //这里的路径就是你所建的页面在page下面的路径
           component: () => import('../components/page/baseTable/index.vue'),
@@ -41,13 +39,25 @@ export default new Router({
           }
         },
         {
+          path: '/baseForm/index',   //这里的路径就是你所建的页面在page下面的路径
+          component: () => import('../components/page/baseForm/index.vue'),
+          meta: {
+            title: 'form表单封装'  //---这个就是上面的titile
+          }
+        },
+        {
           path: '/baseButton/index',   //这里的路径就是你所建的页面在page下面的路径
           component: () => import('../components/page/baseButton/index.vue'),
           meta: {
             title: 'button按钮封装'  //---这个就是上面的titile
           }
-        }
+        },
       ]
     },
+    {
+      path: '/login',
+      component: () => import('../components/page/Login.vue')
+    },
+
   ]
 })

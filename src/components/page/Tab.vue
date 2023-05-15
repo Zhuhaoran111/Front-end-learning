@@ -1,6 +1,82 @@
 <template>
   <div>
-   7777777
+    <el-tabs v-model="activeTab">
+      <el-tab-pane :label="`未读消息(${unread.length})`" name="first">
+        <el-table
+          :data="unread" :show-header="showHeader"
+          :row-style="{'background': '#f5f5f5'}">
+          <el-table-column
+            prop="date"
+            label="日期"
+            width="200">
+            <template slot-scope="scope">
+              <i class="el-icon-time"></i>
+              <span style="margin-left: 5px">{{scope.row.date}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="title"
+            label="消息内容">
+          </el-table-column>
+          <el-table-column width="120" label="操作" align="center">
+            <template slot-scope="scope">
+              <el-button @click="handleRead(scope.$index)" type="warning">标为已读</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-button @click="handleReadAll" type="danger" class="btn-batch">全部标记为已读</el-button>
+      </el-tab-pane>
+      <el-tab-pane :label="`已读消息(${read.length})`" name="second">
+        <el-table
+          :data="read" :show-header="showHeader"
+          :row-style="{'background': '#f5f5f5'}">
+          <el-table-column
+            prop="date"
+            label="日期"
+            width="200">
+            <template slot-scope="scope">
+              <i class="el-icon-time"></i>
+              <span style="margin-left: 5px">{{scope.row.date}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="title"
+            label="消息内容">
+          </el-table-column>
+          <el-table-column width="100" label="操作" align="center">
+            <template slot-scope="scope">
+              <el-button @click="handleDel(scope.$index)" type="danger">删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-button @click="handleDelAll" type="danger" class="btn-batch">删除全部</el-button>
+      </el-tab-pane>
+      <el-tab-pane :label="`回收站(${trash.length})`" name="third">
+        <el-table
+          :data="trash" :show-header="showHeader"
+          :row-style="{'background': '#f5f5f5'}">
+          <el-table-column
+            prop="date"
+            label="日期"
+            width="200">
+            <template slot-scope="scope">
+              <i class="el-icon-time"></i>
+              <span style="margin-left: 5px">{{scope.row.date}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="title"
+            label="消息内容">
+          </el-table-column>
+          <el-table-column width="100" label="操作" align="center">
+            <template slot-scope="scope">
+              <el-button @click="handleRestore(scope.$index)" type="default">还原</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-button @click="handleRestoreAll" class="btn-batch" type="warning">恢复全部</el-button>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 

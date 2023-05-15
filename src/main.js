@@ -11,7 +11,7 @@ import echarts from 'echarts';
 require('./mock');
 
 Vue.config.productionTip = false;
-Vue.use(ElementUI, {size: 'medium'});
+Vue.use(ElementUI, { size: 'medium' });
 Vue.prototype.$axios = axios; // axios不能使用use
 Vue.prototype.$echarts = echarts;
 
@@ -36,7 +36,7 @@ router.beforeEach((to, from, next) => {
   } else {
 
     // 简单的判断IE10及以下不进入富文本编辑器，该组件不兼容
-    if(navigator.userAgent.indexOf('MSIE') > -1 && to.path === '/editor') {
+    if (navigator.userAgent.indexOf('MSIE') > -1 && to.path === '/editor') {
 
       Vue.prototype.$alert('vue-quill-editor组件不兼容IE10及以下浏览器，请使用更高版本的浏览器查看', '浏览器不兼容通知', {
         confirmButtonText: '确定'
@@ -51,6 +51,6 @@ router.beforeEach((to, from, next) => {
 new Vue({
   el: '#app',
   router,
-  components: {App},
+  components: { App },
   template: '<App/>'
 });

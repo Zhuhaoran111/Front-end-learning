@@ -64,7 +64,7 @@
 
 <script>
 export default {
-  name: '',
+  name: 'base-form',
    props:{
       //列表的字段
       columns:{
