@@ -21,7 +21,7 @@
       label="选择"
       :show-overflow-tooltip="false"
       type="radio"
-      v-if="needChecked"
+      v-if="needRadio"
       width="55">
       <template slot-scope="scope">
         <!-- 中间的&nbsp是为了占位用的，如果不写默认radio按钮后面会有1,2,3... -->
@@ -65,7 +65,17 @@
 <script>
 export default {
   name: 'base-form',
-   props:{
+  props: {
+     //列表查询的请求地址
+      fetchUrl: {
+        type: String,
+        default:''
+    },
+     //fetchUrl改变是否查询 ？？？
+      changeQuery: {
+        type: Boolean,
+        default: true
+      },
       //列表的字段
       columns:{
          type:Array,
@@ -82,6 +92,12 @@ export default {
       needChecked:{
           type:Boolean,
           default:true
+     },
+
+     //是否需要选择框
+      needRadio: {
+        type: Boolean,
+        default: false
       },
       //是否双击表格,默认不需要---不常用
       doubleClick:{
@@ -127,15 +143,26 @@ export default {
             address: '上海市普陀区金沙江路 1516 弄',
             date: '2016-05-03',
             hobby:'篮球'
-          }]
+        }],
+        dataSelected: [],//复选框勾选
     }
   },
+
+      watch: {
+      //监听url的改变
+        fetchUrl: function (val) {
+          this.fetchUrl = val
+          if (this.changeQuery) this.fetchData();
+        }
+       },
+
+
   created () {},
   mounted () {},
   methods: {
     //复选框选中的回调---这里接收的是一个数组，里面是选中的对象
     handleSelectionChange(value){
-       console.log(value)
+     this.dataSelected=value
     },
     //单选按钮的回调--index是点击的索引,data是所点击对应行的值
     handleRadioChange(inedx,data){
@@ -147,7 +174,45 @@ export default {
         if (this.doubleClick) {
           this.$emit('handleSelection', row)
         }
-      },
+    },
+    //查询
+       fetchData() {
+         this.listQuery = {
+           page: 1,
+           limit:10,
+         }
+          this.fetchDataForPager();
+    },
+         //触发查询事件
+    fetchDataForPager() {
+      let that = this;
+      this.dataSelected = [];  //清空复选框
+      if (!that.fetchUrl) {
+        this.showWarningMsg("请求url不正确!");
+        return;
+      }
+      //分页则请求分页，没有则直接请求数据
+      let queryParam = that.needPager ? {
+        ...that.params,
+        ...that.listQuery
+      } : that.params;
+      //这里由于fetchUrl是动态的，所以就不能把接口单独封装在api.js中，
+      //而是直接利用request(url,method,data)直接调取request请求
+      request({
+        url: that.fetchUrl,
+        method: 'post',
+        data: queryParam
+      }).then((res) => {
+        //有分页获取数据和总数
+        if (that.needPager) {
+          that.total = Number(res.total);
+          that.tableData = res.records;
+        } else {
+          //没有分页直接获取数据
+          that.tableData = res;
+        }
+      })
+    },
   }
 }
 </script>

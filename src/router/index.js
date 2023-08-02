@@ -52,6 +52,20 @@ export default new Router({
             title: 'button按钮封装'  //---这个就是上面的titile
           }
         },
+        {
+          path: '/baseQueryForm/index',   //这里的路径就是你所建的页面在page下面的路径
+          component: () => import('../components/page/baseQueryForm/index.vue'),
+          meta: {
+            title: '查询组件封装'  //---这个就是上面的titile
+          }
+        },
+        {
+          path: '/baseTree/index',   //这里的路径就是你所建的页面在page下面的路径
+          component: () => import('../components/page/baseTree/index.vue'),
+          meta: {
+            title: 'el-tree组件'  //---这个就是上面的titile
+          }
+        },
       ]
     },
     {

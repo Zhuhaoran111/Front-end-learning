@@ -136,9 +136,6 @@ export default {
     radioChange(e) {
       console.log(this.radioValue)
     },
-
-
-
   }
 };
 </script>

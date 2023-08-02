@@ -55,6 +55,10 @@ export default {
               title: 'form表单封装',
               path: '/baseForm/index'     //这里的路径就是你所建的页面在page下面的路径
             },
+             {
+              title: '查询框封装',
+              path: '/baseQueryForm/index'     //这里的路径就是你所建的页面在page下面的路径
+            },
             {
               title: 'el-tree组件封装',
               path: '/baseTree/index'     //这里的路径就是你所建的页面在page下面的路径
