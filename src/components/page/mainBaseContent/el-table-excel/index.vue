@@ -1,6 +1,6 @@
 <template>
   <div>
-   <div id="main" style="width: 100%;height:400px;"></div>
+   <div id="main" style="width: 100%;height:400px;background-color: pink; "></div>
   </div>
 </template>
 
@@ -47,6 +47,7 @@ export default {
         },
 
         legend: {
+          left: 'right',
           data: ['负荷调控指标', '实际调控负荷', '执行到位率']
         },
         xAxis: [
@@ -84,7 +85,12 @@ export default {
             }
           },
 
-        ],
+     ],
+         grid: {
+           top: "80px",
+           right: "50px",
+           left:"50px"
+        },
         series: [
           {
             name: '负荷调控指标',
@@ -132,7 +138,7 @@ export default {
             symbolSize: 6, //折线点的大小
             itemStyle: {
               normal: {
-                color:red, //折线点的颜色
+                color:"red", //折线点的颜色
                 borderColor: '#ffffff', //拐点边框颜色
                 borderWidth: 2, //拐点边框大小
               },
