@@ -40,7 +40,7 @@ export default {
         },
         {
           title: 'element-ui组件封装',
-          path: 'echarts',
+          path: '',
           icon: 'el-icon-star-on',
           subItems: [
             {
@@ -69,6 +69,18 @@ export default {
           title: 'tab选项卡',
           path: '/tab',
           icon: 'el-icon-message'
+        },
+
+        {
+          title: '前端内容测试',
+          path: '/mainBaseContent',
+          icon: 'el-icon-star-on',
+            subItems: [
+            {
+              title: 'table表格导出excel',
+              path: '/mainBaseContent/el-table-excel/index'     //这里的路径就是你所建的页面在page下面的路径
+            },
+          ]
         },
 
       ]
