@@ -66,10 +66,17 @@ export default new Router({
             title: 'el-tree组件'  //---这个就是上面的titile
           }
         },
-
         {
           path: '/mainBaseContent/el-table-excel/index',   //这里的路径就是你所建的页面在page下面的路径
           component: () => import('../components/page/mainBaseContent/el-table-excel/index.vue'),
+          meta: {
+            title: 'excel导出'  //---这个就是上面的titile
+          }
+        },
+
+        {
+          path: '/mainBaseContent/antv-g6/index',   //这里的路径就是你所建的页面在page下面的路径
+          component: () => import('../components/page/mainBaseContent/antv-g6/index.vue'),
           meta: {
             title: 'excel导出'  //---这个就是上面的titile
           }

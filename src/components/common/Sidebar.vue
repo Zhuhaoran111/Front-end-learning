@@ -77,12 +77,15 @@ export default {
           icon: 'el-icon-star-on',
             subItems: [
             {
-              title: 'table表格导出excel',
+              title: 'echarts图表',
               path: '/mainBaseContent/el-table-excel/index'     //这里的路径就是你所建的页面在page下面的路径
+              },
+            {
+              title: 'aantv/g6',
+              path: '/mainBaseContent/antv-g6/index'     //这里的路径就是你所建的页面在page下面的路径
             },
           ]
         },
-
       ]
     }
   },
